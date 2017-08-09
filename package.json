@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/johnwangel/Message-Bored/issues"
   },
-  "homepage": "https://github.com/johnwangel/Message-Bored#readme"
+  "homepage": "https://github.com/johnwangel/Message-Bored#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "connect-redis": "^3.3.0",
+    "express-session": "^1.15.5",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "redis": "^2.8.0"
+  }
 }
