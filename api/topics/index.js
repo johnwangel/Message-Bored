@@ -24,24 +24,24 @@ function getAllTopics(req, res){
 }
 
 function createNewTopic(req, res){
-    let userId = 2;
-    let name = req.body.name;
+  let created_by = req.body.created_by;
+  let name = req.body.name;
+  console.log('creating topic with ', created_by, ' and ', name);
 
-    Topics.findOne( { where: { name: name } } )
+  Topics.findOne( { where: { name: name } } )
+  .then( topic => {
+    if (topic) {
+      res.json(topic);
+      return;
+    }
+    Topics.create( { name : name, created_by: created_by } )
     .then( topic => {
-      if (topic) {
-        res.json(topic);
-        return;
-      }
-      Topics.create( { name : name, created_by: userId } )
-      .then( topic => {
-        console.log(topic);
-        res.json(topic);
-      });
-    })
-    .catch( err => {
-      console.log(err);
+      res.json(topic);
     });
+  })
+  .catch( err => {
+    console.log(err);
+  });
 }
 
 function updateTopic(req, res){

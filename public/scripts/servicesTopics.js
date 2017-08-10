@@ -10,6 +10,14 @@ angular.module('myApp')
     });
   }
 
+  function createTopic(created_by, name){
+    return $http({ method: 'POST', url: '/api/topics', data: { created_by: created_by, name: name }})
+    .then( newTopic => {
+      console.log('new topic', newTopic);
+      return newTopic.data;
+    });
+  }
+
   function getATopic(id){
     return $http({ method: 'GET', url: `/api/messages/by-topic/${id}`})
     .then( theTopic => {
@@ -21,13 +29,13 @@ angular.module('myApp')
   function createMessage(topicid, authorid, message){
     return $http({ method: 'POST', url: '/api/messages/', data: { body : message, author_id: authorid, topic_id: topicid }})
     .then( theTopic => {
-      console.log(theTopic);
       return theTopic.data;
     });
   }
 
   return {
     getTopics: getTopics,
+    createTopic: createTopic,
     getATopic: getATopic,
     createMessage: createMessage
   };

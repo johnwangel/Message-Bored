@@ -3,4 +3,6 @@
   <li ng-repeat="topic in topicData"  >
     <h2>{{topic.name}}</h2>
   </li>
+  <input type="text" placeholder="topic title" ng-model="topic"><br>
+  <button ng-click="createTheTopic()">Create</button>
 </ul>

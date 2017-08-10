@@ -2,28 +2,22 @@
 var myApp = angular.module('myApp');
 
 myApp.controller(
-  'TopicsController', ['$scope', 'TopicsService', function($scope, TopicsService) {
-
+  'TopicsController', ['$scope', 'TopicsService', function( $scope, TopicsService ) {
     $scope.topics = [];
 
-    $scope.message_body = '';
+    $scope.topic_name = '';
 
-    $scope.createTheMessage = function(){
-        let topicID = window.localStorage.getItem('topicID');
-        let userID = window.localStorage.getItem('authorID');
-        let message = $scope.message;
-        return TopicsService.createMessage(topicID, userID, message)
-        .then( thisMessage => {
-          $scope.topics.messages.push(thisMessage);
+    $scope.createTheTopic = function(){
+        let created_by = window.localStorage.getItem('authorID');
+        let name = $scope.topic;
+        return TopicsService.createTopic(created_by, name)
+        .then( thisTopic => {
+          $scope.topics.push(thisTopic);
         });
     };
 
     return TopicsService.getTopics()
     .then( theTopics => {
-      console.log(theTopics);
       $scope.topics = theTopics;
     });
-
-
-
 }]);

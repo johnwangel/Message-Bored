@@ -24,6 +24,10 @@ myApp
       templateUrl: 'login.html',
       controller: 'NavigationController'
     })
+    .when('/topic/create', {
+      templateUrl: 'topic.html',
+      controller: 'MessageController'
+    })
     .when('/topic/:id', {
       templateUrl: 'topic.html',
       controller: 'MessageController'
