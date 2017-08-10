@@ -7,15 +7,27 @@
 </head>
 <body ng-app="myApp">
 
-<!--   <div class='nav-bar'>
+  <div ng-controller="NavigationController">
     <input type="text" placeholder="username" ng-model="username"><br>
-    <button ng-click="saveUser()">Login</button><br><br>
+    <button ng-click="createTheUser()">Login</button><br><br>
+    <div>
+      {{welcomeMessage}}
+    </div>
     <a ng-href="/createaccount">Create Account</a><br><br>
-  </div> -->
+    <a ng-href="/users">Users</a><br>
+    <a ng-href="/userHome">My Page</a>
+  </div>
+
+  <div ng-controller="TopicsController">
+    <h3>Topics</h3>
+    <ul>
+      <li ng-repeat="topic in topics">
+        <a ng-href="/topic/{{topic.id}}">{{topic.name}}</a>
+      </li>
+    </ul>
+  </div>
 
   <div ng-view></div>
-      <a ng-href="/users">Users</a><br>
-    <a ng-href="/userHome">My Page</a>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
@@ -25,6 +37,10 @@
   <script src="/scripts/controllers/home.controller.js"></script>
   <script src="/scripts/controllers/users.controller.js"></script>
   <script src="/scripts/controllers/userHome.controller.js"></script>
-<!--   <script src="/scripts/controllers/login.controller.js"></script> -->
+  <script src="/scripts/controllers/navigation.controller.js"></script>
+  <script src="/scripts/controllers/topics.controller.js"></script>
+  <script src="/scripts/controllers/topic.controller.js"></script>
+  <script src="/scripts/controllers/new_topic.controller.js"></script>
+  <script src="/scripts/controllers/new_message.controller.js"></script>
 </body>
 </html>

@@ -20,10 +20,14 @@ myApp
       templateUrl: 'userHome.html',
       controller: 'UserHomeController'
     })
-    // .when('/login', {
-    //   templateUrl: 'login.html',
-    //   controller: 'LoginController'
-    // })
+    .when('/login', {
+      templateUrl: 'login.html',
+      controller: 'NavigationController'
+    })
+    .when('/topic/:id', {
+      templateUrl: 'topic.html',
+      controller: 'TopicController'
+    })
     .otherwise({ redirectTo: '/' });
     $locationProvider.html5Mode(true);
 }])

@@ -19,7 +19,7 @@ router.put('/:name', updateTopic);
 function getAllTopics(req, res){
   Topics.findAll({include: { model: Users } })
   .then ( allTopics => {
-    res.send(allTopics);
+    res.json(allTopics);
   });
 }
 
@@ -30,13 +30,13 @@ function createNewTopic(req, res){
     Topics.findOne( { where: { name: name } } )
     .then( topic => {
       if (topic) {
-        res.send(topic);
+        res.json(topic);
         return;
       }
       Topics.create( { name : name, created_by: userId } )
       .then( topic => {
         console.log(topic);
-        res.send(topic);
+        res.json(topic);
       });
     })
     .catch( err => {
@@ -52,7 +52,7 @@ function updateTopic(req, res){
   .then( topic => {
     topic.update( { name : newName }, { where: { id: topic.id } } )
     .then( updatedTopic => {
-      res.send(updatedTopic);
+      res.json(updatedTopic);
     });
   });
 }

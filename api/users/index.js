@@ -19,7 +19,7 @@ router.post('/', createNewUser);
 function getAllUsers(req, res){
   Users.findAll()
   .then ( function (allUsers) {
-    res.send(allUsers);
+    res.json(allUsers);
   });
 }
 
@@ -35,21 +35,21 @@ function getUsersMesssages(req, res){
 //post/
 function createNewUser(req, res){
     let name = req.body.name;
-
     Users.findOne( { where: { name: name } } )
     .then( user => {
       if (user) {
-        res.send(user);
+        res.json(user);
         return;
       }
       Users.create( { name : name } )
       .then( user => {
         console.log(user.id);
-        res.send(user);
+        res.json(user);
       });
     })
     .catch( err => {
       console.log(err);
+      res.sendStatus(500, err.message);
     });
 }
 

@@ -14,7 +14,7 @@ const bcrypt = require('bcrypt');
 let app = express();
 
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 const api = require('./api');
 app.use('/api', api);

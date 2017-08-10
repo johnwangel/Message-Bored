@@ -21,18 +21,15 @@ function getLatestMessages(req, res){
     limit : 10,
     include : [ { model: Users}, { model : Topics } ] })
   .then( tenMessages => {
-    res.send(tenMessages);
+    res.json(tenMessages);
   });
 }
 
 function createNewMessage(req, res){
-  let message = req.body.message;
-  let userId = req.body.userId;
-  let topicId = req.body.topicId;
 
-  Messages.create( { body : message, author_id: userId, topic_id: topicId } )
+  Messages.create( { body : req.body.body, author_id: req.body.author_id, topic_id: req.body.topic_id } )
     .then( message => {
-      res.send(message);
+      res.json(message);
   })
   .catch( err => {
     console.log(err);
@@ -44,9 +41,9 @@ function getMessagesByTopic(req, res){
   let topicId = req.params.topic_id;
 
   Topics.findById(topicId,
-    { include : { model : Messages, include : { model: Users} } })
+    { include : [ { model: Users }, { model : Messages, include : { model: Users} }] })
   .then( allMessages => {
-    res.send( allMessages );
+    res.json( allMessages );
   });
 }
 
