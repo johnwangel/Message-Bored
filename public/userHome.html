@@ -1,0 +1,8 @@
+<h1>Name: {{userData.name}}</h1>
+<p>Member since: {{userData.createdAt | date:'longDate'}}</p>
+<ul>
+  <li ng-repeat="message in userData.messages"  >
+    <h2>{{message.topic.name}}</h2>
+    <p>{{message.body}}</p>
+  </li>
+</ul>

@@ -26,9 +26,9 @@ function getAllUsers(req, res){
 //get/id respond with user and all messages author'd by this user
 function getUsersMesssages(req, res){
   let id = req.params.id;
-  Messages.findAll({ where : { author_id : id }, include: [{model: Users}]})
+  Users.findOne({ where : { id : id }, include: [{model: Messages, include: {model : Topics }}]})
   .then( usersMessages => {
-    res.send(usersMessages);
+    res.json(usersMessages);
   });
 }
 

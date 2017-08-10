@@ -2,11 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Message-Bored</title>
+  <base href="/">
 </head>
-<body>
+<body ng-app="myApp">
+
+<!--   <div class='nav-bar'>
+    <input type="text" placeholder="username" ng-model="username"><br>
+    <button ng-click="saveUser()">Login</button><br><br>
+    <a ng-href="/createaccount">Create Account</a><br><br>
+  </div> -->
+
   <div ng-view></div>
+      <a ng-href="/users">Users</a><br>
+    <a ng-href="/userHome">My Page</a>
+
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+  <script src="/scripts/app.js"></script>
+  <script src="/scripts/constants.js"></script>
+  <script src="/scripts/services.js"></script>
+  <script src="/scripts/controllers/home.controller.js"></script>
+  <script src="/scripts/controllers/users.controller.js"></script>
+  <script src="/scripts/controllers/userHome.controller.js"></script>
+<!--   <script src="/scripts/controllers/login.controller.js"></script> -->
 </body>
 </html>
