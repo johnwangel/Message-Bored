@@ -1,14 +1,12 @@
-  <div class="topic_div">
+  <div class="topic_div" ng-controller="MessageController">
     <h1>{{topic.name}}</h1>
-    <h2>Creation Date: {{topic.createdAt | date:'longDate'}}</h2>
+    <h2>Creation Date: {{topic.createdAt | date:'medium'}}</h2>
     <h3>Creator: {{topic.user.name}}</h3>
     <div class="message_div" ng-repeat="message in topic.messages | orderBy : +message.createdAt">
       <div class="message_creator">{{message.user.name}}: </div>
-      <div class="message_date">{{message.createdAt | date:'longDate'}}</div>
+      <div class="message_date">{{message.createdAt | date:'medium'}}</div>
       <div class="message">{{message.body}}</div>
     </div>
-  </div>
-  <div ng-controller="NewMessageController">
-    <input type="text" placeholder="New message" ng-model="message"><br>
-    <button ng-click="createTheMessage()">Post</button>
-  </div>
+  <input type="text" placeholder="New message" ng-model="message"><br>
+  <button ng-click="createTheMessage()">Post</button>
+</div>

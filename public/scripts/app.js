@@ -26,7 +26,7 @@ myApp
     })
     .when('/topic/:id', {
       templateUrl: 'topic.html',
-      controller: 'TopicController'
+      controller: 'MessageController'
     })
     .otherwise({ redirectTo: '/' });
     $locationProvider.html5Mode(true);

@@ -2,9 +2,8 @@
 var myApp = angular.module('myApp');
 
 myApp.controller(
-  'TopicsController', ['$scope', 'TopicsService', function($scope, TopicsService) {
-
-    $scope.topics = [];
+  'MessageController', ['$scope', '$routeParams', 'TopicsService', function($scope, $routeParams, TopicsService) {
+    $scope.topic = [];
 
     $scope.message_body = '';
 
@@ -14,16 +13,14 @@ myApp.controller(
         let message = $scope.message;
         return TopicsService.createMessage(topicID, userID, message)
         .then( thisMessage => {
-          $scope.topics.messages.push(thisMessage);
+          $scope.topic.messages.push(thisMessage);
         });
     };
 
-    return TopicsService.getTopics()
-    .then( theTopics => {
-      console.log(theTopics);
-      $scope.topics = theTopics;
+    return TopicsService.getATopic($routeParams.id)
+    .then( theTopic => {
+      window.localStorage.setItem('topicID', $routeParams.id);
+      $scope.topic = theTopic;
     });
-
-
 
 }]);
