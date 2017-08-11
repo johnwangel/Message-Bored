@@ -1,0 +1,153 @@
+body {
+  display: grid;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: black;
+}
+
+button {
+  border-radius: 8px;
+  color: pink;
+  background-color: darkblue;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+input {
+  border-radius: 8px;
+  padding: 5px;
+  font-size: 14px;
+  width: 60%;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  font-family: 'Luckiest Guy', cursive;
+  height: 75px;
+  width: 100%;
+  background-color: black;
+  color: pink;
+  font-size: 48px;
+  letter-spacing: 0.1em;
+  padding-left: 20px;
+}
+
+.body_content {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+
+.sidebar {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  height: 100%;
+  padding: 20px;
+  background-color: lightsteelblue;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link {
+  color: deeppink;
+}
+
+a:link:hover {
+  color: white;
+}
+
+a:visited {
+  color: deeppink;
+}
+
+a:visited:hover {
+  color: white;
+}
+
+h3 {
+  color: white;
+}
+
+.topic_list {
+  marg
+}
+
+.topic_list li {
+  list-style: none;
+}
+
+.main_body {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  width: 100%;
+  top: 60px;
+  left: 300px;
+}
+.header {
+  width: 100%;
+  background-color: hotpink;
+  padding: 10px;
+  padding-left: 40px;
+}
+
+.header_title {
+  font-size: 32px;
+  color: darkblue;
+}
+
+.header_subtitle {
+  color: darkblue;
+  font-size: 12px;
+}
+
+.section {
+  margin: 20px;
+  padding: 5px;
+}
+
+.container {
+  margin: 10px;
+  padding: 5px;
+}
+
+.section:nth-child(odd) {
+  background-color: pink;
+}
+
+.message_creator {
+  color: darkblue;
+}
+
+.message_date {
+  font-size: 10px;
+  color: darkblue;
+}
+
+.new_message {
+  padding: 10px;
+}
+
+.message_box {
+  width: 90%;
+}
+
+.latest_link:link {
+  color: hotpink;
+}
+
+.latest_link:link:hover, .latest_link:visited:hover {
+  color: darkblue;
+  font-size: 14px;
+}
+
+.latest_data, .latest_topic {
+  font-size: 12px;
+}
+
+.runin {
+  color: darkblue;
+  font-variant: small-caps;
+  font-size: 14px;
+}

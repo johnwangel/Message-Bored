@@ -3,34 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <title>Message-Bored</title>
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Poppins" rel="stylesheet">
   <base href="/">
 </head>
 <body ng-app="myApp">
+<div class='banner'><span class='banner_title'>Words Words Words</span></div>
+  <div class='body_content'>
+    <div class='sidebar'>
+        <div ng-controller="NavigationController">
+          <input type="text" placeholder="username" ng-model="username">
+          <button ng-click="createTheUser()">Login</button><br><br>
+          <div>
+            {{welcomeMessage}}
+          </div>
+    <!--       <a ng-href="/createaccount">Create Account</a><br><br> -->
+          <a ng-href="/userHome">Home</a><br>
+          <a ng-href="/users">All Users</a><br>
+          <a ng-href="/latest">Latest Posts</a>
+        </div>
 
-  <div ng-controller="NavigationController">
-    <input type="text" placeholder="username" ng-model="username"><br>
-    <button ng-click="createTheUser()">Login</button><br><br>
-    <div>
-      {{welcomeMessage}}
+        <div ng-controller="TopicsController">
+
+          <h3 class="topic_head">TOPICS</h3>
+          <div class="topic_list" ng-repeat="topic in topics">
+            <a ng-href="/topic/{{topic.id}}">{{topic.name}}</a>
+          </div>
+          <br>
+          <input type="text" placeholder="new topic" ng-model="topic">
+          <button ng-click="createTheTopic()">Create</button>
+        </div>
     </div>
-    <a ng-href="/createaccount">Create Account</a><br><br>
-    <a ng-href="/users">Users</a><br>
-    <a ng-href="/userHome">My Page</a>
+      <div ng-view></div>
   </div>
-
-  <div ng-controller="TopicsController">
-    <h3>Topics</h3>
-    <ul>
-      <li ng-repeat="topic in topics">
-        <a ng-href="/topic/{{topic.id}}">{{topic.name}}</a>
-      </li>
-    </ul>
-    <input type="text" placeholder="topic title" ng-model="topic"><br>
-    <button ng-click="createTheTopic()">Create</button>
-  </div>
-
-  <div ng-view></div>
-
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
   <script src="/scripts/app.js"></script>
@@ -43,5 +48,6 @@
   <script src="/scripts/controllers/navigation.controller.js"></script>
   <script src="/scripts/controllers/topics.controller.js"></script>
   <script src="/scripts/controllers/message.controller.js"></script>
+  <script src="/scripts/controllers/latest.controller.js"></script>
 </body>
 </html>

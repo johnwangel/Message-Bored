@@ -32,6 +32,14 @@ myApp
       templateUrl: 'topic.html',
       controller: 'MessageController'
     })
+    .when('/user/:id', {
+      templateUrl: 'userHome.html',
+      controller: 'UserHomeController'
+    })
+    .when('/latest', {
+      templateUrl: 'latest.html',
+      controller: 'LatestController'
+    })
     .otherwise({ redirectTo: '/' });
     $locationProvider.html5Mode(true);
 }])

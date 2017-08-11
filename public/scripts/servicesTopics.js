@@ -33,11 +33,20 @@ angular.module('myApp')
     });
   }
 
+  function getLatestMessages(){
+    return $http({ method: 'GET', url: '/api/messages/latest'})
+    .then( tenPosts => {
+      return tenPosts.data;
+    });
+  }
+
+
   return {
     getTopics: getTopics,
     createTopic: createTopic,
     getATopic: getATopic,
-    createMessage: createMessage
+    createMessage: createMessage,
+    getLatestMessages: getLatestMessages
   };
 
 }]);
