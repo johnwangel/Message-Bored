@@ -12,12 +12,13 @@
   <div class='body_content'>
     <div class='sidebar'>
         <div ng-controller="NavigationController">
-          <input type="text" placeholder="username" ng-model="username">
-          <button ng-click="createTheUser()">Login</button><br><br>
+          <input type="text" placeholder="username" ng-model="user.username">
+          <input type="password" placeholder="password" ng-model="user.password">
+          <button ng-click="loginUser()">Login</button><br><br>
           <div>
             {{welcomeMessage}}
           </div>
-    <!--       <a ng-href="/createaccount">Create Account</a><br><br> -->
+          <a ng-href="/createAccount">Create Account</a><br><br>
           <a class="nav_link" ng-href="/userHome">Home</a><br>
           <a class="nav_link" ng-href="/users">All Users</a><br>
           <a class="nav_link" ng-href="/latest">Latest Posts</a>
@@ -34,7 +35,7 @@
           <button ng-click="createTheTopic()">Create</button>
         </div>
     </div>
-      <div ng-view></div>
+    <div ng-view></div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
@@ -43,12 +44,13 @@
   <script src="/scripts/services.js"></script>
   <script src="/scripts/servicesTopics.js"></script>
   <script src="/scripts/controllers/home.controller.js"></script>
-  <script src="/scripts/controllers/users.controller.js"></script>
-  <script src="/scripts/controllers/userHome.controller.js"></script>
-  <script src="/scripts/controllers/navigation.controller.js"></script>
-  <script src="/scripts/controllers/topics.controller.js"></script>
+  <script src="/scripts/controllers/latest.controller.js"></script>
   <script src="/scripts/controllers/mainHome.controller.js"></script>
   <script src="/scripts/controllers/message.controller.js"></script>
-  <script src="/scripts/controllers/latest.controller.js"></script>
+  <script src="/scripts/controllers/navigation.controller.js"></script>
+  <script src="/scripts/controllers/newAccount.controller.js"></script>
+  <script src="/scripts/controllers/topics.controller.js"></script>
+  <script src="/scripts/controllers/userHome.controller.js"></script>
+  <script src="/scripts/controllers/users.controller.js"></script>
 </body>
 </html>

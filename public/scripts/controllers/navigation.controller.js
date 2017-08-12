@@ -8,8 +8,11 @@ myApp.controller('NavigationController', [
     $scope.username = '';
     $scope.welcomeMessage = '';
 
-    $scope.createTheUser = function() {
-      return UsersService.createUser($scope.username).then(thisUser => {
+    $scope.loginUser = function() {
+      return UsersService.loginUser(
+        $scope.user.username,
+        $scope.user.password
+      ).then(thisUser => {
         window.localStorage.setItem('authorID', thisUser.id);
         $scope.username = '';
         $scope.welcomeMessage = 'Welcome ' + thisUser.name + '!';

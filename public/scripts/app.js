@@ -11,8 +11,8 @@ myApp
     function($routeProvider, $locationProvider) {
       $routeProvider
         .when('/', {
-          templateUrl: 'home.html',
-          controller: 'HomeController'
+          templateUrl: 'latest.html',
+          controller: 'LatestController'
         })
         .when('/users', {
           templateUrl: 'users.html',
@@ -29,6 +29,10 @@ myApp
         .when('/topic/create', {
           templateUrl: 'topic.html',
           controller: 'MessageController'
+        })
+        .when('/createAccount', {
+          templateUrl: 'newuser.html',
+          controller: 'NewAccountController'
         })
         .when('/topic/:id', {
           templateUrl: 'topic.html',

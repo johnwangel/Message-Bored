@@ -17,6 +17,7 @@ router.put('/:name', updateTopic);
 
 //get //  respond with all topics including the creator's name
 function getAllTopics(req, res) {
+  debugger;
   Topics.findAll({ include: { model: Users } }).then(allTopics => {
     res.json(allTopics);
   });

@@ -19,11 +19,21 @@ angular.module('myApp').service('UsersService', [
       });
     }
 
-    function createUser(username) {
+    function createUser(username, password) {
       return $http({
         method: 'POST',
         url: '/api/users/',
-        data: { name: username }
+        data: { username: username, password: password }
+      }).then(currUser => {
+        return currUser.data;
+      });
+    }
+
+    function loginUser(username, password) {
+      return $http({
+        method: 'POST',
+        url: '/api/users/login',
+        data: { username: username, password: password }
       }).then(currUser => {
         console.log(currUser);
         return currUser.data;
@@ -33,7 +43,8 @@ angular.module('myApp').service('UsersService', [
     return {
       getUsers: getUsers,
       getUserHome: getUserHome,
-      createUser: createUser
+      createUser: createUser,
+      loginUser: loginUser
     };
   }
 ]);

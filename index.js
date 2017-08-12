@@ -1,28 +1,27 @@
 /*jshint esversion: 6*/
-const PORT = process.env.PORT || 3000;
-const express = require("express");
-const bodyParser = require("body-parser");
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
-const session = require("express-session");
-const db = require("./models");
+require('./passport')();
 
-const RedisStore = require("connect-redis")(session);
-const saltRounds = 10;
-const bcrypt = require("bcrypt");
+const PORT = process.env.PORT || 3000;
+const express = require('express');
+const bodyParser = require('body-parser');
+const passport = require('passport');
+const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
 
 let app = express();
 
-app.use(express.static("public"));
-app.use(bodyParser.json());
+const db = require('./models');
+const Users = db.users;
 
-const api = require("./api");
-app.use("/api", api);
+require('./passport')(); // passport strategy and serialization;
+
+app.use(express.static('public'));
+app.use(bodyParser.json());
 
 app.use(
   session({
     store: new RedisStore(),
-    secret: "run with the devil",
+    secret: 'run with the devil',
     resave: false,
     saveUninitialized: false
   })
@@ -31,13 +30,14 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get("*", (req, res) => {
-  res.sendFile("./public/index.html", { root: __dirname });
+const api = require('./api');
+app.use('/api', api);
+
+app.get('*', (req, res) => {
+  res.sendFile('./public/index.html', { root: __dirname });
 });
 
 app.listen(PORT, () => {
-  // db.sequelize.drop();
-  // db.sequelize.sync({force: true});
   console.log(`server running on ${PORT}`);
 });
 
