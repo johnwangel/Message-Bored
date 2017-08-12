@@ -6,7 +6,7 @@
       </div>
     </div>
   <div class="container">
-      <div class="section" ng-repeat="message in topic.messages | orderBy : +message.createdAt">
+      <div class="section" ng-repeat="message in topic.messages | orderBy : '-createdAt'">
             <div class="message_creator">{{message.user.name}}: </div>
             <div class="message_date">{{message.createdAt | date:'medium'}}</div>
             <div class="message">{{message.body}}</div>

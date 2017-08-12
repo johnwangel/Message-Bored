@@ -1,16 +1,18 @@
 /*jshint esversion:6 */
 var myApp = angular.module('myApp');
 
-myApp.controller('UserHomeController', [
+myApp.controller('MainHomeController', [
   '$scope',
-  '$routeParams',
   '$filter',
   'UsersService',
-  function($scope, $routeParams, $filter, UsersService) {
+  function($scope, $filter, UsersService) {
     $scope.userData = [];
 
-    return UsersService.getUserHome($routeParams.id).then(userData => {
+    return UsersService.getUserHome(
+      window.localStorage.getItem('authorID')
+    ).then(userData => {
       $filter('orderBy')(userData.messages, 'createdAt');
+      console.log(userData);
       $scope.userData = userData;
     });
   }

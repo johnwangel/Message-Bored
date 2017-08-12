@@ -16,44 +16,42 @@ router.post('/', createNewTopic);
 router.put('/:name', updateTopic);
 
 //get //  respond with all topics including the creator's name
-function getAllTopics(req, res){
-  Topics.findAll({include: { model: Users } })
-  .then ( allTopics => {
+function getAllTopics(req, res) {
+  Topics.findAll({ include: { model: Users } }).then(allTopics => {
     res.json(allTopics);
   });
 }
 
-function createNewTopic(req, res){
+function createNewTopic(req, res) {
   let created_by = req.body.created_by;
   let name = req.body.name;
   console.log('creating topic with ', created_by, ' and ', name);
 
-  Topics.findOne( { where: { name: name } } )
-  .then( topic => {
-    if (topic) {
-      res.json(topic);
-      return;
-    }
-    Topics.create( { name : name, created_by: created_by } )
-    .then( topic => {
-      res.json(topic);
+  Topics.findOne({ where: { name: name } })
+    .then(topic => {
+      if (topic) {
+        res.json(topic);
+        return;
+      }
+      Topics.create({ name: name, created_by: created_by }).then(topic => {
+        res.json(topic);
+      });
+    })
+    .catch(err => {
+      console.log(err);
     });
-  })
-  .catch( err => {
-    console.log(err);
-  });
 }
 
-function updateTopic(req, res){
+function updateTopic(req, res) {
   let name = req.body.name;
   let newName = req.body.newName;
 
-  Topics.findOne({ name : name })
-  .then( topic => {
-    topic.update( { name : newName }, { where: { id: topic.id } } )
-    .then( updatedTopic => {
-      res.json(updatedTopic);
-    });
+  Topics.findOne({ name: name }).then(topic => {
+    topic
+      .update({ name: newName }, { where: { id: topic.id } })
+      .then(updatedTopic => {
+        res.json(updatedTopic);
+      });
   });
 }
 

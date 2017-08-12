@@ -3,6 +3,6 @@
     <div class="header_title">ALL USERS</div>
   </div>
   <div class="container">
-      <div class="section" ng-repeat="user in users"  >{{ user.name }}</div>
+      <div class="section" ng-repeat="user in users"><a class="body_list_link" ng-href="user/{{user.id}}">{{user.name}}</a></div>
   </div>
 </div>

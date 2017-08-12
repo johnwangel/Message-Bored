@@ -4,7 +4,7 @@
   </div>
   <div class="container">
       <div class="section" ng-repeat="post in latest">
-        <div class="latest_data">Posted by <a class="latest_link" href="/users/{{post.user.id"}}">{{post.user.name}}</a> on {{post.createdAt | date:'medium'}} </div>
+        <div class="latest_data">Posted by <a class="latest_link" ng-href="/user/{{post.user.id}}">{{post.user.name}}</a> on {{post.createdAt | date:'medium'}} </div>
         <div class="latest_topic"><span class="runin">topic:</span> <a class="latest_link" ng-href="/topic/{{post.topic.id}}">{{post.topic.name}}</a></div>
         <div class="latest_message"><span class="runin">message:</span> {{post.body}}</div>
       </div>

@@ -16,38 +16,42 @@ router.get('/:id', getUsersMesssages);
 router.post('/', createNewUser);
 
 //get/
-function getAllUsers(req, res){
-  Users.findAll()
-  .then ( function (allUsers) {
+function getAllUsers(req, res) {
+  Users.findAll().then(function(allUsers) {
     res.json(allUsers);
   });
 }
 
 //get/id respond with user and all messages author'd by this user
-function getUsersMesssages(req, res){
+function getUsersMesssages(req, res) {
   let id = req.params.id;
-  Users.findOne({ where : { id : id }, include: [{model: Messages, include: {model : Topics }}]})
-  .then( usersMessages => {
-    res.json(usersMessages);
-  });
+  Users.findOne({
+    where: { id: id },
+    include: [{ model: Messages, include: { model: Topics } }]
+  })
+    .then(usersMessages => {
+      res.json(usersMessages);
+    })
+    .catch(err => {
+      res.send(err);
+    });
 }
 
 //post/
-function createNewUser(req, res){
-    let name = req.body.name;
-    Users.findOne( { where: { name: name } } )
-    .then( user => {
+function createNewUser(req, res) {
+  let name = req.body.name;
+  Users.findOne({ where: { name: name } })
+    .then(user => {
       if (user) {
         res.json(user);
         return;
       }
-      Users.create( { name : name } )
-      .then( user => {
+      Users.create({ name: name }).then(user => {
         console.log(user.id);
         res.json(user);
       });
     })
-    .catch( err => {
+    .catch(err => {
       console.log(err);
       res.sendStatus(500, err.message);
     });

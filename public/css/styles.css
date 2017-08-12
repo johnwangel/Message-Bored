@@ -50,19 +50,19 @@ a {
   text-decoration: none;
 }
 
-a:link {
+.nav_link {
   color: deeppink;
 }
 
-a:link:hover {
+.nav_link:hover {
   color: white;
 }
 
-a:visited {
+.nav_link:visited {
   color: deeppink;
 }
 
-a:visited:hover {
+.nav_link:visited:hover {
   color: white;
 }
 
@@ -71,7 +71,7 @@ h3 {
 }
 
 .topic_list {
-  marg
+  margin-bottom: 5px;
 }
 
 .topic_list li {
@@ -103,13 +103,14 @@ h3 {
 }
 
 .section {
-  margin: 20px;
-  padding: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  padding-left: 40px;
 }
 
 .container {
-  margin: 10px;
-  padding: 5px;
+  margin-bottom: 10px;
+  /*  padding: 5px;*/
 }
 
 .section:nth-child(odd) {
@@ -126,23 +127,28 @@ h3 {
 }
 
 .new_message {
-  padding: 10px;
+  margin-left: 40px;
 }
 
 .message_box {
   width: 90%;
 }
 
-.latest_link:link {
+.latest_link:link,
+.body_list_link:link {
   color: hotpink;
 }
 
-.latest_link:link:hover, .latest_link:visited:hover {
+.latest_link:link:hover,
+.latest_link:visited:hover,
+.body_list_link:hover,
+.body_list_link:hover {
   color: darkblue;
   font-size: 14px;
 }
 
-.latest_data, .latest_topic {
+.latest_data,
+.latest_topic {
   font-size: 12px;
 }
 

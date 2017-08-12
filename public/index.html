@@ -18,16 +18,16 @@
             {{welcomeMessage}}
           </div>
     <!--       <a ng-href="/createaccount">Create Account</a><br><br> -->
-          <a ng-href="/userHome">Home</a><br>
-          <a ng-href="/users">All Users</a><br>
-          <a ng-href="/latest">Latest Posts</a>
+          <a class="nav_link" ng-href="/userHome">Home</a><br>
+          <a class="nav_link" ng-href="/users">All Users</a><br>
+          <a class="nav_link" ng-href="/latest">Latest Posts</a>
         </div>
 
         <div ng-controller="TopicsController">
 
           <h3 class="topic_head">TOPICS</h3>
-          <div class="topic_list" ng-repeat="topic in topics">
-            <a ng-href="/topic/{{topic.id}}">{{topic.name}}</a>
+          <div class="topic_list" ng-repeat="topic in topics | orderBy : 'name' ">
+            <a  class="nav_link" ng-href="/topic/{{topic.id}}">{{topic.name}}</a>
           </div>
           <br>
           <input type="text" placeholder="new topic" ng-model="topic">
@@ -47,6 +47,7 @@
   <script src="/scripts/controllers/userHome.controller.js"></script>
   <script src="/scripts/controllers/navigation.controller.js"></script>
   <script src="/scripts/controllers/topics.controller.js"></script>
+  <script src="/scripts/controllers/mainHome.controller.js"></script>
   <script src="/scripts/controllers/message.controller.js"></script>
   <script src="/scripts/controllers/latest.controller.js"></script>
 </body>
