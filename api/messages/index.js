@@ -35,7 +35,6 @@ function createNewMessage(req, res) {
       Messages.findById(message.id, {
         include: [{ model: Users }]
       }).then(myMess => {
-        console.log('My Mess ', myMess);
         res.json(myMess);
       });
     })

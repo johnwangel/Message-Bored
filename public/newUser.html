@@ -1,5 +1,9 @@
-<div ng-controller="NewAccountController">
-  <input type="text" placeholder="username" ng-model="newuser.username">
-  <input type="password" placeholder="password" ng-model="newuser.password">
-  <button ng-click="createTheUser()">Create Account</button><br><br>
+<div class="main_body" ng-controller="NewAccountController">
+  <div class="header">
+    <div class="header_title">Create Account</div>
+      <input type="text" placeholder="username" ng-model="newuser.username">
+      <input type="password" placeholder="password" ng-model="newuser.password">
+      <button ng-click="createTheUser()">Submit</button>
+    </div>
+  </div>
 <div>

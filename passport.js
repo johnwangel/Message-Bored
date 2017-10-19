@@ -1,7 +1,10 @@
 /*jshint esversion:6 */
 const passport = require('passport');
+const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
-const { User } = require('./models');
+let db = require('./models');
+let Users = db.users;
+//const { Users } = require('./models');
 // const { checkPassword } = require('../utils/hash.js');
 
 module.exports = function() {
@@ -20,20 +23,13 @@ module.exports = function() {
     new LocalStrategy(function(username, password, done) {
       Users.findOne({ where: { name: username } })
         .then(user => {
-          if (!user) {
-            return done(null, false);
-          }
+          if (!user) return done(null, false);
           bcrypt.compare(password, user.password, (err, res) => {
-            if (res) {
-              return done(null, user);
-            } else {
-              return done(null, false);
-            }
+            if (res) return done(null, user);
+            return done(null, false);
           });
         })
-        .catch(err => {
-          return done(err);
-        });
+        .catch(err => { return done(err); } );
     })
   );
 };

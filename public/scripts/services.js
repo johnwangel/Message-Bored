@@ -5,7 +5,6 @@ angular.module('myApp').service('UsersService', [
   function($http) {
     function getUsers() {
       return $http({ method: 'GET', url: '/api/users/' }).then(allUsers => {
-        console.log(allUsers);
         return allUsers.data;
       });
     }
@@ -35,7 +34,6 @@ angular.module('myApp').service('UsersService', [
         url: '/api/users/login',
         data: { username: username, password: password }
       }).then(currUser => {
-        console.log(currUser);
         return currUser.data;
       });
     }

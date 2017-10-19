@@ -9,9 +9,16 @@ myApp.controller('UserHomeController', [
   function($scope, $routeParams, $filter, UsersService) {
     $scope.userData = [];
 
-    return UsersService.getUserHome($routeParams.id).then(userData => {
-      $filter('orderBy')(userData.messages, 'createdAt');
-      $scope.userData = userData;
-    });
+    return UsersService.getUserHome($routeParams.id)
+      .then(userData => {
+
+        let messages = userData.messages;
+        messages.forEach( (message, idx) => {
+          userData.messages[idx].body = message.body.replace(/\r\n?|\n/g,'<br />');
+        })
+
+        $filter('orderBy')(userData.messages, 'createdAt');
+        $scope.userData = userData;
+      });
   }
 ]);

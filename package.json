@@ -19,6 +19,7 @@
   "dependencies": {
     "angular": "^1.6.5",
     "angular-router": "0.0.2",
+    "angular-sanitize": "^1.6.5",
     "bcrypt": "^1.0.2",
     "connect-redis": "^3.3.0",
     "express-session": "^1.15.5",

@@ -11,8 +11,13 @@ myApp.controller('MainHomeController', [
     return UsersService.getUserHome(
       window.localStorage.getItem('authorID')
     ).then(userData => {
+
+      let messages = userData.messages;
+      messages.forEach( (message, idx) => {
+        userData.messages[idx].body = message.body.replace(/\r\n?|\n/g,'<br />');
+      })
+
       $filter('orderBy')(userData.messages, 'createdAt');
-      console.log(userData);
       $scope.userData = userData;
     });
   }

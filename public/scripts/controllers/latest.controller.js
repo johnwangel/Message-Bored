@@ -6,7 +6,9 @@ myApp.controller('LatestController', [
   'TopicsService',
   function($scope, TopicsService) {
     return TopicsService.getLatestMessages().then(latestPosts => {
-      console.log(latestPosts);
+      latestPosts.forEach( (message, idx) => {
+        latestPosts[idx].body = message.body.replace(/\r\n?|\n/g,'<br />');
+      })
       $scope.latest = latestPosts;
     });
   }

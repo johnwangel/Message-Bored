@@ -3,9 +3,10 @@ var myApp = angular.module('myApp');
 
 myApp.controller('MessageController', [
   '$scope',
+  '$sanitize',
   '$routeParams',
   'TopicsService',
-  function($scope, $routeParams, TopicsService) {
+  function($scope, $sanitize, $routeParams, TopicsService) {
     $scope.topic = [];
 
     $scope.createTheMessage = function() {
@@ -17,6 +18,9 @@ myApp.controller('MessageController', [
         userID,
         message
       ).then(thisMessage => {
+        console.log(thisMessage);
+        let messages = thisMessage.body;
+        thisMessage.body = message.replace(/\r\n?|\n/g,'<br />');
         $scope.message = '';
         $scope.topic.messages.push(thisMessage);
       });
@@ -24,6 +28,11 @@ myApp.controller('MessageController', [
 
     return TopicsService.getATopic($routeParams.id).then(theTopic => {
       window.localStorage.setItem('topicID', $routeParams.id);
+      let messages = theTopic.messages;
+      messages.forEach( (message, idx) => {
+        theTopic.messages[idx].body = message.body.replace(/\r\n?|\n/g,'<br />');
+      })
+
       $scope.topic = theTopic;
     });
   }

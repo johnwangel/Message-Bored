@@ -9,7 +9,6 @@ let Topics = db.topics;
 require('../../passport')();
 
 const router = express.Router();
-
 const saltRounds = 10;
 
 //respond with all users
@@ -55,27 +54,27 @@ function createNewUser(req, res) {
         name: req.body.username,
         password: hash
       })
-        .then(user => {
-          res.json(user);
-        })
-        .catch(err => {
-          return res.json(err);
-        });
+      .then(user => {
+        res.json(user);
+      })
+      .catch(err => {
+        return res.json(err);
+      });
     });
   });
 }
 
 function loginUser(req, res) {
-  passport.authenticate('local', (err, user) => {
-    if (err) return res.status(500).json({ err });
+  passport.authenticate('local',
+    (err, user) => {
+      if (err) return res.status(500).json({ err });
+      if (!user) return res.status(401).json({ message: 'invalid' });
 
-    if (!user) return res.status(401).json({ message: 'invalid' });
-
-    req.logIn(user, error => {
-      if (err) return res.json({ error });
-
-      return res.status(200).json({ username: user.username });
-    });
+      req.logIn(user, error => {
+        if (err) return res.json({ error });
+        console.log("USERNAME", user.dataValues)
+        return res.status(200).json(user.dataValues);
+      });
   })(req, res);
 }
 

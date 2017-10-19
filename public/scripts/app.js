@@ -1,5 +1,5 @@
 // creation uses a 2nd array argument to import dependencies
-angular.module('myApp', ['ngRoute']);
+angular.module('myApp', ['ngRoute', 'ngSanitize']);
 
 // retrieval has only one argument
 var myApp = angular.module('myApp');
@@ -26,13 +26,17 @@ myApp
           templateUrl: 'login.html',
           controller: 'NavigationController'
         })
+        .when('/logout', {
+          templateUrl: 'logout.html',
+          controller: 'MainHomeController'
+        })
+        .when('/newUser', {
+          templateUrl: 'newUser.html',
+          controller: 'MainHomeController'
+        })
         .when('/topic/create', {
           templateUrl: 'topic.html',
           controller: 'MessageController'
-        })
-        .when('/createAccount', {
-          templateUrl: 'newuser.html',
-          controller: 'NewAccountController'
         })
         .when('/topic/:id', {
           templateUrl: 'topic.html',

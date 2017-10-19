@@ -5,15 +5,17 @@
         Created by {{topic.user.name}} on {{topic.createdAt | date:'medium'}}
       </div>
     </div>
+  <div class="new_message">
+    <textarea class="message_box" type="text" placeholder="new message" ng-model="message" rows="5" cols="50" wrap="hard"></textarea>
+    <br/>
+    <button class="message_button" ng-click="createTheMessage()">Post</button>
+  </div>
   <div class="container">
-      <div class="section" ng-repeat="message in topic.messages | orderBy : '-createdAt'">
+      <div class="section" ng-repeat="message in topic.messages | orderBy : 'createdAt' : reverse ">
             <div class="message_creator">{{message.user.name}}: </div>
             <div class="message_date">{{message.createdAt | date:'medium'}}</div>
-            <div class="message">{{message.body}}</div>
+            <div class="message_body" ng-bind-html="message.body"></div>
+            <!-- <div class="message">{{message.body}}</div> -->
           </div>
       </div>
-  <div class="new_message">
-    <input class="message_box" type="text" placeholder="new message" ng-model="message">
-    <button ng-click="createTheMessage()">Post</button>
-  </div>
 </div>
