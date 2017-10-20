@@ -29,11 +29,15 @@
 
         <div ng-controller="TopicsController">
           <h3 class="topic_head">TOPICS</h3>
+          <div class="topic_container">
+            <div class="topic_list" ng-repeat="topic in topics | orderBy : 'name' ">
+              <div class="topic_link">
+                <a ng-href="/topic/{{topic.id}}">{{topic.name}}</a>
+              </div>
+            </div>
+          </div>
           <input class='topic_input' type="text" placeholder="new topic" ng-model="topic" />
           <button class='topic_button' ng-click="createTheTopic()">Create</button>
-          <div class="topic_list" ng-repeat="topic in topics | orderBy : 'name' ">
-            <div class="topic_link"><a ng-href="/topic/{{topic.id}}">{{topic.name}}</a></div>
-          </div>
         </div>
     </div>
     <div ng-view></div>
